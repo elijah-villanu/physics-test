@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi3bar44wclhw"
-path="res://.godot/imported/run-sword.png-b558316f108a578318dac2be3da54aad.ctex"
+uid="uid://bstiu0svqaxkg"
+path="res://.godot/imported/light-attack.png-603a115743785201542e95f04ef2c413.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/run-sword.png"
-dest_files=["res://.godot/imported/run-sword.png-b558316f108a578318dac2be3da54aad.ctex"]
+source_file="res://assets/samurai/light-attack.png"
+dest_files=["res://.godot/imported/light-attack.png-603a115743785201542e95f04ef2c413.ctex"]
 
 [params]
 

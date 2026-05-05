@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl54wxrnqpwhl"
-path="res://.godot/imported/heavy-attack.png-0c96a3be5500f1a50656827f9dde6ec3.ctex"
+uid="uid://dru3kpga2ypkv"
+path="res://.godot/imported/run.png-079d7a0e77ab95d24b698f87f2d0aeb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/heavy-attack.png"
-dest_files=["res://.godot/imported/heavy-attack.png-0c96a3be5500f1a50656827f9dde6ec3.ctex"]
+source_file="res://assets/samurai/run.png"
+dest_files=["res://.godot/imported/run.png-079d7a0e77ab95d24b698f87f2d0aeb5.ctex"]
 
 [params]
 

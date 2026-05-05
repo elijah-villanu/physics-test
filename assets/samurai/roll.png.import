@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bstiu0svqaxkg"
-path="res://.godot/imported/light-attack.png-79eae923d2182004e11ad0ab9bf34d59.ctex"
+uid="uid://cwre0yhoix5rg"
+path="res://.godot/imported/roll.png-46de3aef5f12f96d93edb2a37828494b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/light-attack.png"
-dest_files=["res://.godot/imported/light-attack.png-79eae923d2182004e11ad0ab9bf34d59.ctex"]
+source_file="res://assets/samurai/roll.png"
+dest_files=["res://.godot/imported/roll.png-46de3aef5f12f96d93edb2a37828494b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://babx3j0ww20ur"
-path="res://.godot/imported/take-dmg.png-f029edddc11d32b56446a0cc56dcd22c.ctex"
+uid="uid://cna2ushc4jgad"
+path="res://.godot/imported/slime_green.png-7537a22022111bb8764aa544858b4d35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/take-dmg.png"
-dest_files=["res://.godot/imported/take-dmg.png-f029edddc11d32b56446a0cc56dcd22c.ctex"]
+source_file="res://assets/brackeys_platformer_assets/sprites/slime_green.png"
+dest_files=["res://.godot/imported/slime_green.png-7537a22022111bb8764aa544858b4d35.ctex"]
 
 [params]
 
