@@ -312,6 +312,30 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_qmak7")
 
+[sub_resource type="Curve" id="Curve_ufxs0"]
+_data = [Vector2(0.12681912, 0.8737098), 0.0, 0.0, 0, 0, Vector2(0.91683996, 0.11202192), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6we3w"]
+curve = SubResource("Curve_ufxs0")
+
+[sub_resource type="Gradient" id="Gradient_ufxs0"]
+offsets = PackedFloat32Array(0, 0.6895425, 0.76797384, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0.14953268, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6we3w"]
+gradient = SubResource("Gradient_ufxs0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ufxs0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(400, 10, 1)
+gravity = Vector3(45, 98, 0)
+scale_min = 3.0
+scale_max = 6.0
+color_initial_ramp = SubResource("GradientTexture1D_6we3w")
+alpha_curve = SubResource("CurveTexture_6we3w")
+
 [node name="MainLevel" type="Node2D" unique_id=1795883356]
 
 [node name="Player" parent="." unique_id=1112306326 instance=ExtResource("1_ufxs0")]
@@ -340,3 +364,10 @@ tile_set = SubResource("TileSet_6we3w")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1611995864]
 tile_map_data = PackedByteArray("AAD//+7/AAAGAAAAAAAAAO7/AAAGAAAAAAABAO7/AAAGAAAAAAACAO7/AAAGAAAAAAADAO7/AAAGAAAAAAAEAO7/AAAGAAAAAAAFAO7/AAAGAAAAAAAGAPf/AAAGAAAAAAAHAPf/AAAGAAAAAAAHAPz/AAAGAAAAAAAIAPf/AAAGAAAAAAAIAPz/AAAGAAAAAAAJAPf/AAAGAAAAAAAJAP3/AAAGAAAAAAAKAPf/AAAGAAAAAAAKAP7/AAAGAAAAAAALAPf/AAAGAAAAAAALAP7/AAAGAAAAAAALAP//AAAGAAEAAAAMAPj/AAAGAAAAAAAMAP//AAAGAAAAAAANAPj/AAAGAAAAAAAOAPj/AAAGAAAAAAAPAPj/AAAGAAAAAAAQAPj/AAAGAAAAAAARAPj/AAAGAAAAAAARAP3/AAAGAAAAAAASAPj/AAAGAAAAAAATAPv/AAAGAAAAAAATAPz/AAAIAAEAAAAUAPv/AAAGAAAAAAAUAPz/AAAIAAEAAAAVAPv/AAAGAAAAAAAVAPz/AAAIAAEAAAAWAPv/AAAGAAAAAAAWAPz/AAAIAAEAAAAXAPv/AAAGAAAAAAAXAPz/AAAIAAEAAAAYAPv/AAAGAAAAAAAYAPz/AAAIAAEAAAAZAPf/AAAGAAAAAAAZAPv/AAAJAAEAAAAaAPf/AAAGAAAAAAAaAPv/AAAKAAEAAAAbAPf/AAAGAAAAAAAbAPv/AAALAAEAAAAcAPf/AAAGAAAAAAAcAPv/AAAGAAAAAAAdAPf/AAAGAAAAAAAdAPv/AAAGAAAAAAAeAPv/AAAGAAAAAAA=")
 tile_set = SubResource("TileSet_8ra5a")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=983682949]
+position = Vector2(354, -228)
+amount = 200
+lifetime = 21.020000000000003
+preprocess = 30.0
+process_material = SubResource("ParticleProcessMaterial_ufxs0")
