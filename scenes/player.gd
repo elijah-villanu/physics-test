@@ -73,7 +73,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		# deceleration with move_towrads from SPEED to 0
 		play_animation("IDLE", face)
-		velocity.x = move_toward(velocity.x, 0, 1)
+		if !is_on_ice():
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	# Handles movement and collisions for the CharacterBody2D
 	move_and_slide()
@@ -83,7 +84,7 @@ func get_normal_movement(direction: float) -> float:
 
 func get_ice_movement(direction: float, curr_velocity: float) -> float:
 	if direction != 0:
-		# Uses linear interpolation
+		# Uses linear interpolation to replicate slow change in acceleration
 		return lerp(curr_velocity, direction * SPEED, ICE_ACCELERATION)
 	else:
 		if curr_velocity < FULL_STOP_VAL and curr_velocity > -FULL_STOP_VAL:
