@@ -4,14 +4,7 @@
 [ext_resource type="Script" uid="uid://kbh8pcxpk3o4" path="res://scenes/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bi3bar44wclhw" path="res://assets/samurai/run-sword.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cl54wxrnqpwhl" path="res://assets/samurai/heavy-attack.png" id="4_qlg0r"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("4_qlg0r")
-region = Rect2(306, 0, 51, 36)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("4_qlg0r")
-region = Rect2(357, 0, 51, 36)
+[ext_resource type="Texture2D" uid="uid://coqe8p6p58dun" path="res://assets/samurai/jump.png" id="4_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("4_qlg0r")
@@ -28,6 +21,22 @@ region = Rect2(30, 0, 30, 22)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bq26l"]
 atlas = ExtResource("1_g2els")
 region = Rect2(60, 0, 30, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("4_tuyoq")
+region = Rect2(0, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("4_tuyoq")
+region = Rect2(22, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("4_tuyoq")
+region = Rect2(44, 0, 22, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("4_tuyoq")
+region = Rect2(66, 0, 22, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("3_dqkch")
@@ -73,17 +82,11 @@ region = Rect2(288, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a8ls1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfm1y")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
 }],
 "loop": true,
 "name": &"DASH",
-"speed": 2.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -99,7 +102,19 @@ animations = [{
 "name": &"IDLE",
 "speed": 2.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}],
 "loop": true,
 "name": &"JUMP",
 "speed": 5.0
@@ -152,7 +167,7 @@ height = 10.0
 script = ExtResource("1_qhqgy")
 
 [node name="Animations" type="AnimatedSprite2D" parent="." unique_id=1047611747]
-position = Vector2(0, -11)
+position = Vector2(11, -17)
 sprite_frames = SubResource("SpriteFrames_6nivd")
 animation = &"DASH"
 
@@ -166,13 +181,13 @@ shape = SubResource("CapsuleShape2D_ufxs0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=373571626]
 position = Vector2(-2, -31)
-zoom = Vector2(4, 4)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 
 [node name="DashCooldown" type="Timer" parent="." unique_id=429561728]
 
 [node name="DashDuration" type="Timer" parent="." unique_id=1070280598]
-wait_time = 0.07
+wait_time = 0.13
 
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]

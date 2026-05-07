@@ -8,7 +8,12 @@ extends CharacterBody2D
 const SPEED = 175.0
 const JUMP_VELOCITY = -300
 const GRAVITY = Vector2(0, 800.0)
-const DASH_SPEED = 500.0
+const DASH_SPEED = 550.0
+
+# Ice specific constants
+const ICE_ACCELERATION: float = 0.01
+const SLIDING_VAL: float = 0.1
+const FULL_STOP_VAL: float = 15 
 
 # Tracks where the last direction faces for the idle animation
 var face: bool = false
@@ -17,7 +22,7 @@ var dashing: bool = false
 var on_ice: bool = false
 var can_dash: bool = true
 
-# Player state machine
+# Player state machine (WILL IMPLEMENT LATER)
 #enum PlayerState {
 	#IDLE,
 	#RUN,
@@ -36,25 +41,29 @@ func _physics_process(delta: float) -> void:
 	# Handles jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		play_animation("JUMP", face)
 		
 	if (Input.is_action_pressed("dash") and can_dash):
 		dashing = true
 		can_dash = false
 		dash_duration.start()
 		dash_cooldown.start()
-
-	# Handles left and right movement (has deceleration)
+	
 	# Inputs set on project settings
+	# Input.get_axis returns a negative value (left) and positive (right)
 	var direction :float = Input.get_axis("move_left", "move_right")
 	if direction:
-		# Input.get_axis returns a negative value (left) and positive (right)
+		# Handles left and right movement (has deceleration)
 		if (direction > 0):
 			face = false
 			play_animation("RUN", face)
 		elif (direction < 0):
 			face = true
 			play_animation("RUN", face)
-		velocity.x = direction * SPEED
+		if is_on_ice():
+			velocity.x = get_ice_movement(direction, velocity.x)
+		else:
+			velocity.x = get_normal_movement(direction)
 		
 		# Handles dash
 		if (dashing):
@@ -64,18 +73,39 @@ func _physics_process(delta: float) -> void:
 	else:
 		# deceleration with move_towrads from SPEED to 0
 		play_animation("IDLE", face)
-		if (on_ice): 
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-		else:
-			velocity.x = move_toward(velocity.x, 0, 1)
+		velocity.x = move_toward(velocity.x, 0, 1)
 
 	# Handles movement and collisions for the CharacterBody2D
 	move_and_slide()
 
+func get_normal_movement(direction: float) -> float:
+	return direction * SPEED
 
+func get_ice_movement(direction: float, curr_velocity: float) -> float:
+	if direction != 0:
+		# Uses linear interpolation
+		return lerp(curr_velocity, direction * SPEED, ICE_ACCELERATION)
+	else:
+		if curr_velocity < FULL_STOP_VAL and curr_velocity > -FULL_STOP_VAL:
+			return 0
+		return lerp(curr_velocity, 0.0, SLIDING_VAL)
 
 # Takes in the animation name to play and where it should face (true is left, right false)
 func play_animation(animation: String, flip: bool) -> void:
+	# This is due to the animated sprite being offset by the current collision
+	match animation:
+		"IDLE":
+			animated_sprite.position.x = 0.0
+			animated_sprite.position.y = -10.5
+		"RUN":
+			animated_sprite.position.x = 1.0
+			animated_sprite.position.y = -15.0
+		"DASH":
+			animated_sprite.position.x = 11.0
+			animated_sprite.position.y = -17.0
+		"JUMP":
+			animated_sprite.position.x = -1.0
+			animated_sprite.position.y = -10.0
 	animated_sprite.play(animation)
 	animated_sprite.flip_h = flip
 
@@ -85,3 +115,10 @@ func _on_dash_cooldown_timeout() -> void:
 
 func _on_dash_duration_timeout() -> void:
 	dashing = false
+
+# Checks if the surface is ice
+func is_on_ice() -> bool:
+	var collider = get_last_slide_collision()
+	if !collider:
+		return false
+	return collider.get_collider().name == "Ice"
