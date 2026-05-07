@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $Animations
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var dash_duration: Timer = $DashDuration
+@onready var dash_sound: AudioStreamPlayer = $DashSound
 
 const SPEED = 175.0
 const JUMP_VELOCITY = -300
@@ -44,6 +45,7 @@ func _physics_process(delta: float) -> void:
 		play_animation("JUMP", face)
 		
 	if (Input.is_action_pressed("dash") and can_dash):
+		dash_sound.play()
 		dashing = true
 		can_dash = false
 		dash_duration.start()

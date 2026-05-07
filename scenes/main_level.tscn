@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cef44xdec6x6g" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_6we3w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ufxs0"]
-distance = -3.0000007
+distance = -2.5
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ufxs0"]
 texture = ExtResource("2_6we3w")
@@ -320,13 +320,21 @@ position = Vector2(140, -157)
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1920382711]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=698870858]
-position = Vector2(100, -175)
+position = Vector2(103, -174)
 rotation = 1.5707964
 scale = Vector2(4, 4)
 shape = SubResource("WorldBoundaryShape2D_ufxs0")
 
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1701461919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=762759570]
+position = Vector2(562, -175)
+rotation = 4.712389
+scale = Vector2(4, 4)
+shape = SubResource("WorldBoundaryShape2D_ufxs0")
+
 [node name="Ice" type="TileMapLayer" parent="." unique_id=289394544]
-tile_map_data = PackedByteArray("AAANAAAAAAAHAAAAAAAOAAAAAAAHAAAAAAAPAAAAAAAHAAAAAAAQAAAAAAAHAAAAAAARAAAAAAAHAAAAAAASAAAAAAAHAAAAAAATAAAAAAAHAAAAAAAUAAAAAAAHAAAAAAAVAAAAAAAHAAAAAAAWAAAAAAAHAAAAAAAXAAAAAAAHAAAAAAAYAAAAAAAHAAAAAAAZAAAAAAAHAAAAAAAaAAAAAAAHAAAAAAAbAAAAAAAHAAAAAAAcAAAAAAAHAAAAAAAdAAAAAAAHAAAAAAAeAAAAAAAHAAAAAAAfAAAAAAAHAAAAAAAgAAAAAAAHAAAAAAAhAAAAAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAANAAAAAAAHAAAAAAAOAAAAAAAHAAAAAAAPAAAAAAAHAAAAAAAQAAAAAAAHAAAAAAARAAAAAAAHAAAAAAASAAAAAAAHAAAAAAATAAAAAAAHAAAAAAAUAAAAAAAHAAAAAAAVAAAAAAAHAAAAAAAWAAAAAAAHAAAAAAAXAAAAAAAHAAAAAAAYAAAAAAAHAAAAAAAZAAAAAAAHAAAAAAAaAAAAAAAHAAAAAAAbAAAAAAAHAAAAAAAcAAAAAAAHAAAAAAAdAAAAAAAHAAAAAAAeAAAAAAAHAAAAAAAfAAAAAAAHAAAAAAAgAAAAAAAHAAAAAAAhAAAAAAAHAAAAAAAGAPz/AAAHAAAAAAAiAAAAAAAHAAAAAAAjAAAAAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_6we3w")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1611995864]
