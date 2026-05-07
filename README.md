@@ -10,5 +10,9 @@ Tilemap Asset
 
 Godot Docs
 
-Player State Machine 
-https://forum.godotengine.org/t/enum-state-machines/96638 
+Dash Implementation
+https://www.youtube.com/watch?v=A-Y1zxJ6oH4 
+
+Ice Sliding Implementation (mainly for the math)
+https://www.youtube.com/watch?v=3WkehbmBH2E 
+
